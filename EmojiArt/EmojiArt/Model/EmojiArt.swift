@@ -12,7 +12,7 @@ struct EmojiArt: Codable {
     var backgroundURL: URL?
     var emojis = [Emoji] ()
     
-    struct Emoji: Identifiable, Codable {
+    struct Emoji: Hashable, Identifiable, Codable {
         let text: String
         var x: Int // offset from the center
         var y: Int // offset from the center
@@ -47,5 +47,11 @@ struct EmojiArt: Codable {
     mutating func addEmoji(_ text: String, x: Int, y: Int, size: Int) {
         uniqueEmojiId += 1
         emojis.append(Emoji(text: text, x: x, y: y, size: size, id: uniqueEmojiId))
+    }
+    
+    mutating func remove(_ emoji: Emoji) {
+        if let index = emojis.firstIndex(of: emoji) {
+            emojis.remove(at: index)
+        }
     }
 }
