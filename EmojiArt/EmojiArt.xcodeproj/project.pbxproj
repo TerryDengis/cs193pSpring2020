@@ -96,10 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				FEFBC2C024F423BF0021CF5C /* EmojiArtDocumentView.swift */,
+				FEC7062024F580B6000C04B8 /* OptionalImageView.swift */,
 				FEC7062224F58F56000C04B8 /* AnimatableSystemFontModifier.swift */,
 				FEFBC2C224F423C10021CF5C /* Assets.xcassets */,
 				FEFBC2C724F423C10021CF5C /* LaunchScreen.storyboard */,
-				FEC7062024F580B6000C04B8 /* OptionalImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

@@ -19,6 +19,8 @@
 		FE605D4724DB020D002B918A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE605D4524DB020D002B918A /* LaunchScreen.storyboard */; };
 		FE872C2524E596A000CF2363 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE872C2424E596A000CF2363 /* Pie.swift */; };
 		FE872C2724E5A86100CF2363 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE872C2624E5A86100CF2363 /* Cardify.swift */; };
+		FEB35B9E24FAB29B000D384B /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB35B9D24FAB29B000D384B /* UIColor+RGBA.swift */; };
+		FEB35BA024FABA07000D384B /* MemorizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB35B9F24FABA07000D384B /* MemorizeExtensions.swift */; };
 		FEF6058A24DDB5CD0051FF76 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF6058924DDB5CD0051FF76 /* GridLayout.swift */; };
 		FEF6058C24DDB8D40051FF76 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF6058B24DDB8D40051FF76 /* Grid.swift */; };
 		FEF6058E24DDE0B50051FF76 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF6058D24DDE0B50051FF76 /* Array+Identifiable.swift */; };
@@ -39,6 +41,8 @@
 		FE605D4824DB020D002B918A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE872C2424E596A000CF2363 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		FE872C2624E5A86100CF2363 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
+		FEB35B9D24FAB29B000D384B /* UIColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
+		FEB35B9F24FABA07000D384B /* MemorizeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeExtensions.swift; sourceTree = "<group>"; };
 		FEF6058924DDB5CD0051FF76 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		FEF6058B24DDB8D40051FF76 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FEF6058D24DDE0B50051FF76 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 				FEF6058924DDB5CD0051FF76 /* GridLayout.swift */,
 				FE2ED0AB24DC71B600198668 /* EmojiMemoryGameVM.swift */,
 				FE03FA2A24E1DBBF0060D3EC /* Themes.swift */,
+				FEB35B9D24FAB29B000D384B /* UIColor+RGBA.swift */,
 				FEF6058D24DDE0B50051FF76 /* Array+Identifiable.swift */,
 				FE03FA2824E1B9720060D3EC /* Array+Only.swift */,
 				FE605D3A24DB020C002B918A /* AppDelegate.swift */,
@@ -90,6 +95,7 @@
 				FE605D4524DB020D002B918A /* LaunchScreen.storyboard */,
 				FE605D4824DB020D002B918A /* Info.plist */,
 				FE605D4224DB020D002B918A /* Preview Content */,
+				FEB35B9F24FABA07000D384B /* MemorizeExtensions.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -179,8 +185,10 @@
 				FE03FA2B24E1DBBF0060D3EC /* Themes.swift in Sources */,
 				FE03FA2924E1B9720060D3EC /* Array+Only.swift in Sources */,
 				FEF6058A24DDB5CD0051FF76 /* GridLayout.swift in Sources */,
+				FEB35B9E24FAB29B000D384B /* UIColor+RGBA.swift in Sources */,
 				FE872C2724E5A86100CF2363 /* Cardify.swift in Sources */,
 				FE605D3F24DB020C002B918A /* EmojiMemoryGameView.swift in Sources */,
+				FEB35BA024FABA07000D384B /* MemorizeExtensions.swift in Sources */,
 				FEF6058E24DDE0B50051FF76 /* Array+Identifiable.swift in Sources */,
 				FE872C2524E596A000CF2363 /* Pie.swift in Sources */,
 				FEF6058C24DDB8D40051FF76 /* Grid.swift in Sources */,

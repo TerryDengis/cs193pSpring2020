@@ -25,7 +25,8 @@ struct EmojiMemoryGameView: View {
                     .aspectRatio(2/3, contentMode: .fit)
                 }
                 .padding()
-                .foregroundColor(self.viewModel.theme.color)
+            .foregroundColor(Color(self.viewModel.theme.color))
+                //.foregroundColor(self.viewModel.theme.color)
             }
             .navigationBarTitle(viewModel.theme.name)
             .navigationBarItems(leading: Text("Score : \(viewModel.score)"), trailing: Button("New Game"){

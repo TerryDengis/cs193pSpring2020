@@ -14,7 +14,7 @@ class EmojiMemoryGameVM: ObservableObject {
     private(set) var theme = themes.randomElement()!
     
     private static func createMemoryGame (_ theme: Theme) -> MemoryGame<String> {
-        return MemoryGame<String>(numberOfPairs: theme.numberOfPairs ?? Int.random(in: 3...theme.emojis.count)) { pairIndex in
+        return MemoryGame<String>(numberOfPairs: theme.emojis.count) { pairIndex in
             return theme.emojis[pairIndex]
         }
     }
@@ -22,12 +22,14 @@ class EmojiMemoryGameVM: ObservableObject {
     init(){
         theme.emojis.shuffle()
         model =  EmojiMemoryGameVM.createMemoryGame(theme)
+        print (theme.json!.utf8!)
     }
     
     func newGame () {
         theme = themes.randomElement()!
         theme.emojis.shuffle()
         model =  EmojiMemoryGameVM.createMemoryGame(theme)
+        print (theme.json!.utf8!)
     }
     
     // MARK: - Access to the model
