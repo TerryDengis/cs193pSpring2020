@@ -39,6 +39,11 @@ struct MemoryGame <CardContent> where CardContent: Equatable {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                     score += 2
+                    // Bonus Points
+                    score += Int(ceil(cards[chosenIndex].bonusRemaining * cards[chosenIndex].bonusTimeLimit))
+                    score += Int(ceil(cards[potentialMatchIndex].bonusRemaining * cards[potentialMatchIndex].bonusTimeLimit))
+
+
                 } else {
                     if cards[chosenIndex].hasBeenSeen {
                         score -= 1
