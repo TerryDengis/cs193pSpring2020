@@ -62,6 +62,7 @@ struct EmojiArtDocumentView: View {
             
             GeometryReader { geometry in
                 ZStack {
+                    
                     Color.white.overlay(
                         OptionalImageView(uiImage: self.document.backgroundImage)
                             .scaleEffect(self.zoomScale)
@@ -70,6 +71,7 @@ struct EmojiArtDocumentView: View {
                     .gesture(self.tapCanvas(in: geometry.size))
                     
                     if self.isLoading {
+                        
                         Image(systemName: "hourglass")
                             .imageScale(.large)
                             .spinning()
@@ -103,15 +105,16 @@ struct EmojiArtDocumentView: View {
                     self.zoomToFit(image, in: geometry.size)
                 }
                 .onDrop(of: ["public.image", "public.text"], isTargeted: nil) { providers, location in
-                    // TODO: - the location on drop is not working properly
+                    
+                    let yOffset = geometry.frame(in: .global).origin.y / self.zoomScale
 
                     var location = geometry.convert(location, from: .local)
-                    print (location)
-                    print (geometry.size)
+
                     // convert from apple coordinates to Cartesian coordinate system
+                    // and adjust for pan and zoom
                     location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2)
                     location = CGPoint(x: location.x - self.panOffset.width, y: location.y - self.panOffset.height)
-                    location = CGPoint(x: location.x / self.zoomScale, y: location.y / self.zoomScale)
+                    location = CGPoint(x: location.x / self.zoomScale, y: (location.y / self.zoomScale) - yOffset)
                     
                     return self.drop(providers: providers, at: location)
                 }
@@ -234,6 +237,7 @@ struct EmojiArtDocumentView: View {
     private func position(for emoji: EmojiArt.Emoji, in size: CGSize) -> CGPoint {
         var location = emoji.location
         // convert from Cartesian coordinate system to apple coordinate system
+        // and adjust for pan and zoom
         location = CGPoint(x: location.x * zoomScale, y: location.y * zoomScale)
         location = CGPoint (x: location.x + size.width/2, y: location.y + size.height/2)
         location = CGPoint(x: location.x + panOffset.width, y: location.y + panOffset.height)
