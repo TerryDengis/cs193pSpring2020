@@ -107,6 +107,7 @@
 			children = (
 				FE5176D324FD3E000058AE73 /* EmojiArtDocumentStore.swift */,
 				FEFBC2D424F424980021CF5C /* EmojiArtDocument.swift */,
+				FEB35BA524FAFE11000D384B /* EmojiArtDocumentPalette.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -118,7 +119,6 @@
 				FEC7062024F580B6000C04B8 /* OptionalImageView.swift */,
 				FEB35BA324FAF91D000D384B /* PaletteChooser.swift */,
 				FEBA140824FC386F009DE6BB /* PaletteEditorView.swift */,
-				FEB35BA524FAFE11000D384B /* EmojiArtDocumentPalette.swift */,
 				FEB35BA124FADED5000D384B /* Spinning.swift */,
 				FEC7062224F58F56000C04B8 /* AnimatableSystemFontModifier.swift */,
 				FEFBC2C224F423C10021CF5C /* Assets.xcassets */,

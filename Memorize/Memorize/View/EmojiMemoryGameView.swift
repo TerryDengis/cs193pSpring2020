@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
-    @ObservedObject var viewModel: EmojiMemoryGameVM
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
         NavigationView {
@@ -29,6 +29,7 @@ struct EmojiMemoryGameView: View {
                 
             }
             .navigationBarTitle(viewModel.theme.name)
+                
             .navigationBarItems(leading: Text("Score : \(viewModel.score)"), trailing: Button("New Game"){
                 withAnimation(.easeInOut){
                     self.viewModel.newGame()
@@ -92,7 +93,7 @@ private struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGameVM()
+        let game = EmojiMemoryGame(theme: EmojiThemeStore().themes[0])
         game.choose(card: game.cards[0])
         return EmojiMemoryGameView(viewModel: game)
     }
@@ -100,3 +101,6 @@ struct ContentView_Previews: PreviewProvider {
 
 // MARK: - Drawing Constants
 private let fontScaleFactor: CGFloat = 0.7
+
+
+
