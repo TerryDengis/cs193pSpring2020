@@ -13,6 +13,7 @@ struct ThemeView: View {
     
     @State private var editMode: EditMode = .inactive
     @State private var showEmojiEditor: Bool = false
+    @State private var chosenThemeId: Int = 0
     
     var body: some View {
         NavigationView {
@@ -26,18 +27,18 @@ struct ThemeView: View {
                             .imageScale(.large)
                             .onTapGesture {
                                 self.showEmojiEditor = true
-                                //self.choosenTheme = theme
+                                self.chosenThemeId = theme.id
                             }
-                            .sheet (isPresented: self.$showEmojiEditor) {                                ThemeEditorView ()
-                                    //.environmentObject(self.emojiThemeStore)
-                                    //.frame(minWidth: 300, minHeight: 500)
+                            .sheet (isPresented: self.$showEmojiEditor) {
+                                ThemeEditorView (chosenThemeId: self.$chosenThemeId)
+                                    .environmentObject(self.emojiThemeStore)
                             }
                             VStack {
-                                EditableText (theme.name, isEditing: self.editMode.isEditing) { name in
-                                    self.emojiThemeStore.setName(name, for: theme)
+                                HStack {
+                                    Text (theme.name)
+                                        .font(.title)
+                                    Spacer()
                                 }
-                                .font(.title)
-                                
                                 HStack {
                                     Text (theme.numberOfPairs == theme.emojis.count ? "All of" : "\(theme.numberOfPairs) of")
                                     Text (emojiString(from: theme.emojis))
@@ -58,12 +59,13 @@ struct ThemeView: View {
             }
             .navigationBarTitle("Memorize")
             .navigationBarItems(leading: Button(action: {
-                    print("Plus Pressed")
-                }, label: {
-                    Image(systemName: "plus").imageScale(.large)
+                self.emojiThemeStore.newTheme()
+                self.editMode = .active
+            }, label: {
+                Image(systemName: "plus").imageScale(.large)
                     
-                }),
-                    trailing: EditButton()
+            }),
+                trailing: EditButton()
             )
             .environment(\.editMode, $editMode)
         }

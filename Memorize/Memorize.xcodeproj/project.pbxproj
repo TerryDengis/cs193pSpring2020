@@ -126,6 +126,7 @@
 			children = (
 				FE605D3E24DB020C002B918A /* EmojiMemoryGameView.swift */,
 				FEB9364524FED34800A73B98 /* ThemeView.swift */,
+				FECF24F025007D1000AB4E5D /* ThemeEditorView.swift */,
 				FE03FA2A24E1DBBF0060D3EC /* Themes.swift */,
 				FE872C2424E596A000CF2363 /* Pie.swift */,
 				FE872C2624E5A86100CF2363 /* Cardify.swift */,
@@ -135,7 +136,6 @@
 				FE016ED724FFFF91009F88C0 /* EditableText.swift */,
 				FE605D4024DB020D002B918A /* Assets.xcassets */,
 				FE605D4524DB020D002B918A /* LaunchScreen.storyboard */,
-				FECF24F025007D1000AB4E5D /* ThemeEditorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

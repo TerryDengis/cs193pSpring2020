@@ -17,4 +17,15 @@ extension Array where Element: Identifiable {
         }
         return nil
     }
+    
+    func newId () -> Int {
+        var id: Int = 0
+        
+        for index in 0..<self.count {
+            if self[index].id as! Int >= id {
+                id = self[index].id as! Int
+            }
+        }
+        return id + 1
+    }
 }
