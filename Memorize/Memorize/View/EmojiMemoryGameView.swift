@@ -93,7 +93,7 @@ private struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame(theme: EmojiThemeStore().themes[0])
+        let game = EmojiMemoryGame(theme: EmojiThemeStore().themes.list[0])
         game.choose(card: game.cards[0])
         return EmojiMemoryGameView(viewModel: game)
     }

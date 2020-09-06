@@ -96,7 +96,7 @@ struct ThemeEditorView: View {
         }
         .onAppear {
             if let index = self.emojiThemeStore.indexWith(self.chosenThemeId) {
-                let theme = self.emojiThemeStore.themes[index]
+                let theme = self.emojiThemeStore.themes.list[index]
                 self.themeName = theme.name
                 self.numberOfPairs = theme.numberOfPairs
                 self.emojis = theme.emojis

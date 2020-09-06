@@ -18,7 +18,7 @@ struct ThemeView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach (emojiThemeStore.themes) { theme in
+                ForEach (emojiThemeStore.themes.list) { theme in
                     NavigationLink(destination: EmojiMemoryGameView(viewModel: EmojiMemoryGame(theme: theme))){
                         HStack {
                             Image (systemName:"pencil.circle.fill")
@@ -41,7 +41,7 @@ struct ThemeView: View {
                                 }
                                 HStack {
                                     Text (theme.numberOfPairs == theme.emojis.count ? "All of" : "\(theme.numberOfPairs) of")
-                                    Text (emojiString(from: theme.emojis))
+                                    Text (theme.emojiString)
                                     Spacer ()
                                 }
                                 .foregroundColor(.primary)
@@ -70,15 +70,6 @@ struct ThemeView: View {
             .environment(\.editMode, $editMode)
         }
     }
-}
-
-private func  emojiString (from emojis: [String]) -> String {
-    var returnValue: String = ""
-    
-    for emoji in emojis {
-        returnValue += emoji
-    }
-    return returnValue
 }
 
 //struct ThemeView_Previews: PreviewProvider {

@@ -7,23 +7,28 @@
 //
 
 import SwiftUI
+import Combine
 
 class EmojiThemeStore: ObservableObject {
     @EnvironmentObject var emojiThemeStore: EmojiThemeStore
-    @Published var themes: [Theme]
+    @Published var themes: Themes
+    
+    private var autosaveCancellable: AnyCancellable?
     
     init () {
-        if let themesjson = UserDefaults.standard.data (forKey: "EmojiMemoryStore") {
-            print ("Themes json : \(themesjson.utf8 ?? "nil")")
-            themes = [Theme] ()
-        } else {
-            themes = defaultThemes.sorted { $0.name < $1.name }
+        print (NSHomeDirectory())
+        let defaultsKey = "EmojiMemoryStore"
+    
+        themes = Themes(json: UserDefaults.standard.data (forKey: defaultsKey)) ?? Themes ()
+        
+        autosaveCancellable = $themes.sink { themes in
+            UserDefaults.standard.set (themes.json, forKey: defaultsKey)
         }
     }
     
     func indexWith(_ id: Int) -> Int? {
-        for index in 0 ..< themes.count {
-            if themes[index].id == id {
+        for index in 0 ..< themes.list.count {
+            if themes.list[index].id == id {
                 return index
             }
         }
@@ -32,47 +37,47 @@ class EmojiThemeStore: ObservableObject {
 
     func removeEmoji( _ emoji: String, fromTheme id: Int) -> [String] {
         if let index = indexWith(id) {
-            if let chosenIndex = themes[index].emojis.firstIndex(of: emoji) {
-                themes[index].emojis.remove(at: chosenIndex)
+            if let chosenIndex = themes.list[index].emojis.firstIndex(of: emoji) {
+                themes.list[index].emojis.remove(at: chosenIndex)
             }
-            return themes[index].emojis
+            return themes.list[index].emojis
         }
         return [""]
     }
     
     func setNumberOfPairs(to pairs:Int, in id: Int) {
         if let index = indexWith(id) {
-            themes[index].numberOfPairs = pairs
+            themes.list[index].numberOfPairs = pairs
         }
     }
     
     func setName(_ name: String, forId id: Int) {
         if let index = indexWith(id) {
-            themes[index].name = name
+            themes.list[index].name = name
         }
-        themes = themes.sorted { $0.name < $1.name }
+        themes.list = themes.list.sorted { $0.name < $1.name }
     }
     func setColor(_ color: UIColor.RGB, forId id: Int) {
         if let index = indexWith(id) {
-            themes[index].color = color
+            themes.list[index].color = color
         }
     }
     func remove(_ index: Int) {
-        themes.remove(at: index)
+        themes.list.remove(at: index)
     }
     
     func newTheme () {
-        themes.append(Theme(id: themes.newId(), name: "untitled", emojis: ["🙂","😕"], color: colorPalette[0], numberOfPairs: 2))
+        themes.list.append(Theme(id: themes.list.newId(), name: "untitled", emojis: ["🙂","😕"], color: colorPalette[0], numberOfPairs: 2))
     }
     
     func addEmojis (_ emojis: String, forId id: Int) -> [String]{
         if let index = indexWith(id) {
             for emoji in emojis {
-                if !themes[index].emojis.contains("\(emoji)") {
-                    themes[index].emojis.append("\(emoji)")
+                if !themes.list[index].emojis.contains("\(emoji)") {
+                    themes.list[index].emojis.append("\(emoji)")
                 }
             }
-            return themes[index].emojis
+            return themes.list[index].emojis
         }
         return [""]
     }
@@ -83,13 +88,13 @@ let colorPalette: [UIColor.RGB] = [
     ]
 
 let defaultThemes = [
-    Theme (
+    (Theme (
         id: 1,
         name: "Gaming",
         emojis: ["🎮","🕹","📀","👾","🤖"],
         color: colorPalette[0],
         numberOfPairs: 4
-    ),
+    )),
     Theme (
         id: 2,
         name: "Hearts",
@@ -119,7 +124,7 @@ let defaultThemes = [
         numberOfPairs: 8
     ),
     Theme (
-        id: 9,
+        id: 6,
         name: "Sports",
         emojis: ["⚽️","🏀","🏈","🏐","🎱","⛳️","🏑","🎳","🥌","⛸"], //10
         color: colorPalette[7],
@@ -140,3 +145,4 @@ let defaultThemes = [
         numberOfPairs: 11
     )
 ]
+
