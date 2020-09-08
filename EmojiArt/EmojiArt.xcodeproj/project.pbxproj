@@ -14,6 +14,7 @@
 		FE5176D824FD6DDD0058AE73 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5176D724FD6DDD0058AE73 /* EditableText.swift */; };
 		FE65C03224F431BA00FEFF8E /* EmojiArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE65C03124F431BA00FEFF8E /* EmojiArt.swift */; };
 		FE65C03424F438E200FEFF8E /* EmojiArtExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE65C03324F438E200FEFF8E /* EmojiArtExtensions.swift */; };
+		FE6D4284250711D3000B637F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6D4283250711D3000B637F /* ImagePicker.swift */; };
 		FEB35BA224FADED5000D384B /* Spinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB35BA124FADED5000D384B /* Spinning.swift */; };
 		FEB35BA424FAF91D000D384B /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB35BA324FAF91D000D384B /* PaletteChooser.swift */; };
 		FEB35BA624FAFE11000D384B /* EmojiArtDocumentPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB35BA524FAFE11000D384B /* EmojiArtDocumentPalette.swift */; };
@@ -37,6 +38,8 @@
 		FE5176D724FD6DDD0058AE73 /* EditableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 		FE65C03124F431BA00FEFF8E /* EmojiArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArt.swift; sourceTree = "<group>"; };
 		FE65C03324F438E200FEFF8E /* EmojiArtExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiArtExtensions.swift; sourceTree = "<group>"; };
+		FE6D4283250711D3000B637F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		FE6D42852507144D000B637F /* Emoji Art.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Emoji Art.entitlements"; sourceTree = "<group>"; };
 		FEB35BA124FADED5000D384B /* Spinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinning.swift; sourceTree = "<group>"; };
 		FEB35BA324FAF91D000D384B /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
 		FEB35BA524FAFE11000D384B /* EmojiArtDocumentPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentPalette.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		FEFBC2BB24F423BF0021CF5C /* EmojiArt */ = {
 			isa = PBXGroup;
 			children = (
+				FE6D42852507144D000B637F /* Emoji Art.entitlements */,
 				FEFBC2D324F424570021CF5C /* SupportingFiles */,
 				FEFBC2D224F4243C0021CF5C /* Model */,
 				FEFBC2D124F424310021CF5C /* View */,
@@ -127,6 +131,7 @@
 				FEFBC2C724F423C10021CF5C /* LaunchScreen.storyboard */,
 				FE5176D524FD44790058AE73 /* EmojiArtDocumentChooser.swift */,
 				FE5176D724FD6DDD0058AE73 /* EditableText.swift */,
+				FE6D4283250711D3000B637F /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				FEB35BA624FAFE11000D384B /* EmojiArtDocumentPalette.swift in Sources */,
 				FEFBC2D524F424980021CF5C /* EmojiArtDocument.swift in Sources */,
 				FEFBC2BD24F423BF0021CF5C /* AppDelegate.swift in Sources */,
+				FE6D4284250711D3000B637F /* ImagePicker.swift in Sources */,
 				FEBA140924FC386F009DE6BB /* PaletteEditorView.swift in Sources */,
 				FE65C03424F438E200FEFF8E /* EmojiArtExtensions.swift in Sources */,
 				FE5176D624FD44790058AE73 /* EmojiArtDocumentChooser.swift in Sources */,
@@ -372,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "EmojiArt/Emoji Art.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"EmojiArt/Preview Content\"";
 				DEVELOPMENT_TEAM = 8WA3Q4R937;
@@ -392,6 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "EmojiArt/Emoji Art.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"EmojiArt/Preview Content\"";
 				DEVELOPMENT_TEAM = 8WA3Q4R937;

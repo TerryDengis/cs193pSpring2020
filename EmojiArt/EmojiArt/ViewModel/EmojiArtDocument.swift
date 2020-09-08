@@ -32,6 +32,7 @@ class EmojiArtDocument: ObservableObject, Hashable, Identifiable {
     var emojis: [EmojiArt.Emoji] { emojiArt.emojis}
     
     init (id: UUID? = nil) {
+        print (NSHomeDirectory())
         self.id = id ?? UUID()
         let defaultKey = "EmojiArtDocument.\(self.id.uuidString)"
         emojiArt = EmojiArt(json: UserDefaults.standard.data(forKey: defaultKey)) ?? EmojiArt ()
@@ -41,6 +42,26 @@ class EmojiArtDocument: ObservableObject, Hashable, Identifiable {
             UserDefaults.standard.set(emojiArt.json, forKey:defaultKey)
         }
         fetchBackgroundImageData()
+    }
+    
+    var url: URL? { didSet { self.save(self.emojiArt) } }
+    
+    init(url: URL) {
+        self.id = UUID()
+        self.url = url
+        self.emojiArt = EmojiArt(json: try? Data(contentsOf: url)) ?? EmojiArt()
+        selectedEmojis = Set()
+        
+        autosaveCancellable = $emojiArt.sink { emojiArt in
+            self.save(emojiArt)
+        }
+        fetchBackgroundImageData()
+    }
+    
+    private func save(_ emojiArt: EmojiArt) {
+        if url != nil {
+            try? emojiArt.json?.write(to: url!)
+        }
     }
     
     // MARK: - Intents(s)
@@ -118,17 +139,9 @@ class EmojiArtDocument: ObservableObject, Hashable, Identifiable {
     
     private func fetchBackgroundImageData() {
         backgroundImage = nil
-        if let url = self.emojiArt.backgroundURL {
+        if let url = self.emojiArt.backgroundURL?.imageURL {
             fetchImageCancellable?.cancel() // just in case there is already a fetch happening
-//            let session = URLSession.shared
-//            let publisher = session
-//                .dataTaskPublisher(for: url)
-//                .map { data, urlResponse in UIImage(data: data)}
-//                .receive(on: DispatchQueue.main)
-//                .replaceError(with: nil)
-//            fetchImageCancellable = publisher.assign(to: \.backgroundImage, on: self)
-            fetchImageCancellable = URLSession.shared
-                .dataTaskPublisher(for: url)
+            fetchImageCancellable = URLSession.shared.dataTaskPublisher(for: url)
                 .map { data, urlResponse in UIImage(data: data)}
                 .receive(on: DispatchQueue.main)
                 .replaceError(with: nil)
